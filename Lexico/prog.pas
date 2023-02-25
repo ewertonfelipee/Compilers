@@ -6,24 +6,25 @@ const fim = '0';
 
  var s:string;
  var p:integer;
+ var fila:fila_of_integer;
 
  procedure lePalavra;
  begin
-    p := 1;
-    s := 'ccabcba0';
+    p = 1;
+    s = 'ccabcba0';
  end;
 
  function xp(c: char):boolean;
  begin
     If s[p]=c
-    Then xp := true
-    Else xp := false;
+    Then xp = true
+    Else xp = false;
  end;
 
  function np :boolean;
  begin
-    p  := p+1;
-    np := true;
+    p  = p+1;
+    np = true;
  end;
 
  label q0, q1, qf,qe;
@@ -31,9 +32,9 @@ const fim = '0';
 
  begin
  lePalavra;
- max := length(s);
+ max == length(s);
 
- for i := 0 to max do
+ for i = 0 to max do
     begin
-        p:=1;
+        p=1;
         goto q0;

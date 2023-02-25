@@ -1,18 +1,27 @@
+class Token():
+    def __init__(self, name, tipo, linha, coluna):
+        self.name = name
+        self.tipo = tipo
+        self.linha = linha
+        self.coluna = coluna
+
 def isKeyWord(str = []) -> bool:
     if(str == "read" or str == "write" or str == "for" or str == "to"
     or str == "do" or str == "begin" or str == "end" or str == "repeat"
     or str == "until" or str == "while" or str == "if" or str == "else"
-    or str == "function" or str == "integer" or str == "real" or str == "const"):
+    or str == "function" or str == "integer" or str == "real" or str == "const" 
+    or str == "fila_of_integer" or str == "fila_of_real" or str == "input"
+    or str == "output" or str == "lenght" or str == "concatena" or str == " inverte"):
         return True
     return False
 
 def isOperator(ch) -> bool:
-    if(ch == "+" or ch == "-" or ch == "*" or ch == "/" or ch == "//"):
+    if(ch == "+" or ch == "-" or ch == "*" or ch == "/" or ch == "%"):
         return True
     return False
 
 def isRelationals(ch) -> bool:
-    if(ch == "=" or ch == ">" or ch == "<" or ch == ">=" or ch == "<=" or ch == "<>"):
+    if(ch == "=" or ch == ">" or ch == "<" or ch == ">=" or ch == "<=" or ch == "=="):
         return True
     return False
 
@@ -33,40 +42,41 @@ token = ""
 contadorlinha = 0
 contadorcoluna = 0
 
-tabela_tokens = {}
-
-
+tabela_tokens = []
 
 for line in arquivo:
     if line.strip() != '':
-        for index in line:
-            if index == ' ' or isvalidIdentifier(index):
+        while (contadorcoluna<len(line)):
+            if line[contadorcoluna] == ' ' or isvalidIdentifier(line[contadorcoluna]):
                 if isKeyWord(token):
-                    tabela_tokens[token] = "Reserved Word"
+                    tabela_tokens.append(Token(token, "Reserved Word", contadorlinha, contadorcoluna))
                 elif token.isnumeric():
-                    tabela_tokens[token] = "Number"
+                    tabela_tokens.append(Token(token, "Number", contadorlinha, contadorcoluna))
                 elif token != "":
-                    tabela_tokens[token] = "Id"
-                if isOperator(index):
-                    tabela_tokens[index] = "Operator"
-                elif isRelationals(index):
-                    if (index == '<' or index == '>') and (line[contadorcoluna + 1] == "=" or line[contadorcoluna + 1] == ">"):
-                        tabela_tokens[index + line[contadorcoluna + 1]] = "Relational"
+                    tabela_tokens.append(Token(token, "Id", contadorlinha, contadorcoluna))
+                if isOperator(line[contadorcoluna]):
+                    tabela_tokens.append(Token(line[contadorcoluna], "Operator", contadorlinha, contadorcoluna))
+                elif isRelationals(line[contadorcoluna]):
+                    if (line[contadorcoluna] == '<' or line[contadorcoluna] == '>' or line[contadorcoluna] == '=') and line[contadorcoluna + 1] == "=":
+                        tabela_tokens.append(Token(line[contadorcoluna] + line[contadorcoluna + 1], "Relational", contadorlinha, contadorcoluna))
+                        contadorcoluna += 1
                     else:
-                        tabela_tokens[index] = "Relational"
-                elif isDelimeter(index):
-                    if index == ':' and line[contadorcoluna + 1] == "=":
-                        tabela_tokens[index + line[contadorcoluna + 1]] = "Relational"
+                        tabela_tokens.append(Token(line[contadorcoluna], "Relational", contadorlinha, contadorcoluna))
+                elif isDelimeter(line[contadorcoluna]):
+                    if line[contadorcoluna] == ':' and line[contadorcoluna + 1] == "=":
+                        tabela_tokens.append(Token(line[contadorcoluna] + line[contadorcoluna + 1], "Relational", contadorlinha, contadorcoluna))
+                        contadorcoluna += 1
                     else:
-                        tabela_tokens[index] = "Delimiter"
+                        tabela_tokens.append(Token(line[contadorcoluna], "Delimiter", contadorlinha, contadorcoluna))
                 token = ""
-            elif index.isalpha() or index.isnumeric():
-                token = token + index
-            elif index !="\n":
+            elif line[contadorcoluna].isalpha() or line[contadorcoluna].isnumeric() or line[contadorcoluna] == "_":
+                token = token + line[contadorcoluna]
+            elif line[contadorcoluna] !="\n":
                 print("ERROR")
                 exit()
             contadorcoluna += 1
         contadorlinha += 1
         contadorcoluna = 0
 
-print(tabela_tokens)
+for i in tabela_tokens:
+    print(i.name + "    " + i.tipo + "    " + str(i.linha) + "    " + str(i.coluna))

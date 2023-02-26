@@ -50,8 +50,12 @@ for line in arquivo:
             if line[contadorcoluna] == ' ' or isvalidIdentifier(line[contadorcoluna]):
                 if isKeyWord(token):
                     tabela_tokens.append(Token(token, "Reserved Word", contadorlinha, contadorcoluna))
-                elif token.isnumeric():
-                    tabela_tokens.append(Token(token, "Number", contadorlinha, contadorcoluna))
+                elif line[contadorcoluna].isnumeric() and line[contadorcoluna + 1] != ".":
+                    tabela_tokens.append(Token(token, "number", contadorlinha, contadorcoluna))
+                #elif isReal(line[contadorcoluna]):
+                elif line[contadorcoluna].isnumeric() and line[contadorcoluna + 1]  == ".":
+                    tabela_tokens.append(Token(line[contadorcoluna]+ line[contadorcoluna + 1], "real", contadorlinha, contadorcoluna))
+                    contadorcoluna += 1
                 elif token != "":
                     tabela_tokens.append(Token(token, "Id", contadorlinha, contadorcoluna))
                 if isOperator(line[contadorcoluna]):

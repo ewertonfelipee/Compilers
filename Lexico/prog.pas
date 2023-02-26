@@ -1,5 +1,4 @@
 
-
 program autoGoto1;
 
 const fim = '0';
@@ -10,7 +9,7 @@ const fim = '0';
 
  procedure lePalavra;
  begin
-    p = 1;
+    p = 1.2352353465364;
     s = 'ccabcba0';
  end;
 

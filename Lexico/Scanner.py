@@ -30,8 +30,8 @@ def isDelimeter(ch) -> bool:
     return False
 
 def isvalidIdentifier(str = []) -> bool:
-    if(isOperator(str[0]) == True or
-    isDelimeter(str[0]) == True or isRelationals(str[0]) == True):
+    if(isOperator(str) == True or
+    isDelimeter(str) == True or isRelationals(str) == True):
         return True
     return False
 
@@ -50,12 +50,15 @@ for line in arquivo:
             if line[contadorcoluna] == ' ' or isvalidIdentifier(line[contadorcoluna]):
                 if isKeyWord(token):
                     tabela_tokens.append(Token(token, "Reserved Word", contadorlinha, contadorcoluna))
-                elif line[contadorcoluna].isnumeric() and line[contadorcoluna + 1] != ".":
-                    tabela_tokens.append(Token(token, "number", contadorlinha, contadorcoluna))
-                #elif isReal(line[contadorcoluna]):
-                elif line[contadorcoluna].isnumeric() and line[contadorcoluna + 1]  == ".":
-                    tabela_tokens.append(Token(line[contadorcoluna]+ line[contadorcoluna + 1], "real", contadorlinha, contadorcoluna))
-                    contadorcoluna += 1
+                elif token.isnumeric() and line[contadorcoluna] != ".":
+                    tabela_tokens.append(Token(token, "Number", contadorlinha, contadorcoluna))
+                elif token.isnumeric() and line[contadorcoluna] == ".":
+                    aux = ""
+                    while (not isvalidIdentifier(line[contadorcoluna]) or line[contadorcoluna] == "."):
+                            aux = aux + line[contadorcoluna]
+                            contadorcoluna += 1
+                    tabela_tokens.append(Token(token + aux, "Real", contadorlinha, contadorcoluna))
+                    contadorcoluna -= 1
                 elif token != "":
                     tabela_tokens.append(Token(token, "Id", contadorlinha, contadorcoluna))
                 if isOperator(line[contadorcoluna]):
@@ -82,5 +85,9 @@ for line in arquivo:
         contadorlinha += 1
         contadorcoluna = 0
 
+f = open("Token.txt", "w")
+
 for i in tabela_tokens:
-    print(i.name + "    " + i.tipo + "    " + str(i.linha) + "    " + str(i.coluna))
+    f.write(i.name + "    " + i.tipo + "    " + str(i.linha) + "    " + str(i.coluna) + "\n")
+
+f.close()

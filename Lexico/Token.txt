@@ -1,4 +1,4 @@
-program    Id    0    7
+program    Reserved Word    0    7
 autoGoto1    Id    0    17
 ;    Delimiter    0    17
 const    Reserved Word    1    5
@@ -8,22 +8,22 @@ fim    Id    1    9
 0    Number    1    14
 '    Delimiter    1    14
 ;    Delimiter    1    15
-var    Id    2    4
+var    Reserved Word    2    4
 s    Id    2    6
 :    Delimiter    2    6
-string    Id    2    13
+string    Reserved Word    2    13
 ;    Delimiter    2    13
-var    Id    3    4
+var    Reserved Word    3    4
 p    Id    3    6
 :    Delimiter    3    6
 integer    Reserved Word    3    14
 ;    Delimiter    3    14
-var    Id    4    4
+var    Reserved Word    4    4
 fila    Id    4    9
 :    Delimiter    4    9
 fila_of_integer    Reserved Word    4    25
 ;    Delimiter    4    25
-procedure    Id    5    10
+procedure    Reserved Word    5    10
 lePalavra    Id    5    20
 ;    Delimiter    5    20
 begin    Reserved Word    7    0
@@ -50,21 +50,21 @@ char    Id    10    20
 boolean    Id    10    29
 ;    Delimiter    10    29
 begin    Reserved Word    12    0
-If    Id    12    6
+If    Reserved Word    12    6
 s    Id    12    8
 [    Delimiter    12    8
 p    Id    12    10
 ]    Delimiter    12    10
 =    Relational    12    11
 c    Id    13    0
-Then    Id    13    8
+Then    Reserved Word    13    8
 xp    Id    13    11
 =    Relational    13    12
-true    Id    14    0
-Else    Id    14    8
+true    Reserved Word    14    0
+Else    Reserved Word    14    8
 xp    Id    14    11
 =    Relational    14    12
-false    Id    14    19
+false    Reserved Word    14    19
 ;    Delimiter    14    19
 end    Reserved Word    15    4
 ;    Delimiter    15    4
@@ -82,11 +82,11 @@ p    Id    18    10
 ;    Delimiter    18    12
 np    Id    19    6
 =    Relational    19    7
-true    Id    19    13
+true    Reserved Word    19    13
 ;    Delimiter    19    13
 end    Reserved Word    20    4
 ;    Delimiter    20    4
-label    Id    21    6
+label    Reserved Word    21    6
 q0    Id    21    9
 ,    Delimiter    21    9
 q1    Id    21    13
@@ -95,7 +95,7 @@ qf    Id    21    17
 ,    Delimiter    21    17
 qe    Id    21    20
 ;    Delimiter    21    20
-var    Id    22    4
+var    Reserved Word    22    4
 i    Id    22    6
 ,    Delimiter    22    6
 max    Id    22    10
@@ -124,6 +124,6 @@ p    Id    28    9
 =    Relational    28    9
 1    Number    28    11
 ;    Delimiter    28    11
-goto    Id    29    12
+goto    Reserved Word    29    12
 q0    Id    29    15
 ;    Delimiter    29    15

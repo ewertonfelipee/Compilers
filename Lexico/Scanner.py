@@ -8,10 +8,12 @@ class Token():
 def isKeyWord(str = []) -> bool:
     if(str == "read" or str == "write" or str == "for" or str == "to"
     or str == "do" or str == "begin" or str == "end" or str == "repeat"
-    or str == "until" or str == "while" or str == "if" or str == "else"
+    or str == "until" or str == "while" or str == "If" or str == "Else"
     or str == "function" or str == "integer" or str == "real" or str == "const" 
     or str == "fila_of_integer" or str == "fila_of_real" or str == "input"
-    or str == "output" or str == "lenght" or str == "concatena" or str == " inverte"):
+    or str == "output" or str == "lenght" or str == "concatena" or str == " inverte"
+    or str == "procedure" or str == "var" or str == "Then" or str == "true"
+    or str == "false" or str == "goto" or str == "label" or str == "string" or str == "program"):
         return True
     return False
 
@@ -35,7 +37,7 @@ def isvalidIdentifier(str = []) -> bool:
         return True
     return False
 
-arquivo = open("prog.pas", "r")
+arquivo = open("Lexico\prog.pas", "r")
 
 token = ""
 

@@ -1,0 +1,81 @@
+<programa> & program <id> ; <corpo> 
+<corpo> & <declara> <rotina> begin <sentencas> end
+<declara> & var <dvar> <mais_dc> | <empty>
+<mais_dc> & ; <cont_dc>
+<cont_dc> & <dvar> <mais_dc> | <empty>
+<dvar> & <variaveis> : <tipo_var>
+<tipo_var>1 & integer
+<tipo_var>2 & real
+<tipo_var>3 & fila_of_integer 
+<tipo_var>4 & fila_of_real
+<variaveis> & <id> <mais_var>
+<mais_var> & , <variaveis> | <empty>
+<rotina>1 & <procedimento>
+<rotina>2 & <funcao> | <empty>
+<procedimento> & procedure <id> <parametros> ; <corpo> ; <rotina>
+<funcao> & function <id> <parametros> : <tipo_funcao> ; <corpo> ; <rotina>
+<parametros> & ( <lista_parametros> ) | <empty>
+<lista_parametros> & <lista_id> : <tipo_var> <cont_lista_par>
+<cont_lista_par> & ; <lista_parametros> | <empty>
+<lista_id> & <id> <cont_lista_id>
+<cont_lista_id> & , <lista_id> | <empty>
+<tipo_var>1 & integer
+<tipo_var>2 & real
+<tipo_var>3 & fila_of_integer 
+<tipo_var>4 & fila_of_real
+<sentencas> & <comando> <mais_sentencas>
+<mais_sentencas> & ; <cont_sentencas>
+<cont_sentencas> & <sentencas> | <empty>
+<var_read> & <id> <mais_var_read>
+<mais_var_read> & , <var_read> | <empty>
+<var_write> & <id> <mais_var_write>
+<mais_var_write> & , <var_write> | <empty>
+<comando>1 & read ( <var_read> )
+<comando>2 & write ( <var_write> )
+<comando>3 & for <id> := <expressao> to <expressao> do begin <sentencas> end
+<comando>4 & repeat <sentencas> until ( <condicao> )
+<comando>5 & while ( <condicao> ) do begin <sentencas> end
+<comando>6 & if ( <condicao> ) then begin <sentencas> end <pfalsa>
+<comando>7 & <id> := <expressao>
+<comando>8 & <chamada_procedimento>
+<chamada_procedimento> & <id> <argumentos>
+<argumentos> & ( <lista_arg> ) | <empty>
+<lista_arg> & <expressao> <cont_lista_arg>
+<cont_lista_arg> & , <lista_arg> | <empty>
+<condicao>1 & <relacao> ( <expressao_num> , <expressao_num> )
+<condicao>2 & <relacao> ( <expressao_fila> , <expressao_fila> )
+<pfalsa> & else begin <sentencas> end | <empty>
+<relacao>1 & =
+<relacao>2 & >
+<relacao>3 & <
+<relacao>4 & >=
+<relacao>5 & <=
+<relacao>6 & <>
+<expressao>1 & <expressao_num>
+<expressao>2 & <expressao_fila>
+<expressao_num>1 & <termo>
+<expressao_num>2 & <id><argumentos>
+<operando>1 & <id>
+<operando>2 & <integer_num>
+<operando>3 & <real_num>
+<operando>4 & <operador> ( <operando> , <operando> )
+<operador>1 & +
+<operador>2 & -
+<operador>3 & *
+<operador>4 & /
+<operador>5 & //
+<termo>1 & <operador> ( <operando> , <operando> )
+<termo>2 & <id>
+<termo>3 & <integer_num>
+<termo>4 & <real_num>
+<expressao_fila>1 & <opFila> ( <conteudo> )
+<expressao_fila>2 & concatena ( <conteudo> , <conteudo> )
+<expressao_fila>3 & inverte ( <conteudo> )
+<conteudo>1 & # #
+<conteudo>2 & # <integer_num> <integer_num_cont> #
+<conteudo>3 & # <real_num> <real_num_cont> #
+<integer_num_cont> & , <integer_num> <integer_num_cont> | <empty>
+<real_num_cont> & , <real_num> <real_num_cont> | <empty>
+<opFila>1 & input
+<opFila>2 & output
+<opFila>3 & length

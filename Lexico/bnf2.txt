@@ -11,18 +11,19 @@
 <variaveis> & <id> <mais_var>
 <mais_var> & , <variaveis> | <empty>
 <rotina>1 & <procedimento>
-<rotina>2 & <funcao> | <empty>
+<rotina>2 & <funcao>
+<rotina>3 & <empty>
 <procedimento> & procedure <id> <parametros> ; <corpo> ; <rotina>
 <funcao> & function <id> <parametros> : <tipo_funcao> ; <corpo> ; <rotina>
+<tipo_funcao>1 & integer
+<tipo_funcao>2 & real
+<tipo_funcao>3 & fila_of_integer 
+<tipo_funcao>4 & fila_of_real
 <parametros> & ( <lista_parametros> ) | <empty>
 <lista_parametros> & <lista_id> : <tipo_var> <cont_lista_par>
 <cont_lista_par> & ; <lista_parametros> | <empty>
 <lista_id> & <id> <cont_lista_id>
 <cont_lista_id> & , <lista_id> | <empty>
-<tipo_var>1 & integer
-<tipo_var>2 & real
-<tipo_var>3 & fila_of_integer 
-<tipo_var>4 & fila_of_real
 <sentencas> & <comando> <mais_sentencas>
 <mais_sentencas> & ; <cont_sentencas>
 <cont_sentencas> & <sentencas> | <empty>
@@ -38,6 +39,7 @@
 <comando>6 & if ( <condicao> ) then begin <sentencas> end <pfalsa>
 <comando>7 & <id> := <expressao>
 <comando>8 & <chamada_procedimento>
+<comando>9 & <empty>
 <chamada_procedimento> & <id> <argumentos>
 <argumentos> & ( <lista_arg> ) | <empty>
 <lista_arg> & <expressao> <cont_lista_arg>
@@ -50,11 +52,11 @@
 <relacao>3 & <
 <relacao>4 & >=
 <relacao>5 & <=
-<relacao>6 & <>
+<relacao>6 & ==
 <expressao>1 & <expressao_num>
 <expressao>2 & <expressao_fila>
 <expressao_num>1 & <termo>
-<expressao_num>2 & <id><argumentos>
+<expressao_num>2 & <id> <argumentos>
 <operando>1 & <id>
 <operando>2 & <integer_num>
 <operando>3 & <real_num>
@@ -63,7 +65,7 @@
 <operador>2 & -
 <operador>3 & *
 <operador>4 & /
-<operador>5 & //
+<operador>5 & %
 <termo>1 & <operador> ( <operando> , <operando> )
 <termo>2 & <id>
 <termo>3 & <integer_num>
@@ -71,9 +73,9 @@
 <expressao_fila>1 & <opFila> ( <conteudo> )
 <expressao_fila>2 & concatena ( <conteudo> , <conteudo> )
 <expressao_fila>3 & inverte ( <conteudo> )
-<conteudo>1 & # #
-<conteudo>2 & # <integer_num> <integer_num_cont> #
-<conteudo>3 & # <real_num> <real_num_cont> #
+<conteudo>1 & #
+<conteudo>2 & <integer_num> <integer_num_cont>
+<conteudo>3 & <real_num> <real_num_cont>
 <integer_num_cont> & , <integer_num> <integer_num_cont> | <empty>
 <real_num_cont> & , <real_num> <real_num_cont> | <empty>
 <opFila>1 & input

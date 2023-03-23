@@ -1,39 +1,37 @@
-
-program autoGoto1;
-
-const fim = '0';
-
- var s:string;
- var p:integer;
- var fila:fila_of_integer;
-
- procedure lePalavra;
- begin
-    p = 1.2352353465364;
-    s = 'ccabcba0';
- end;
-
- function xp(c: char):boolean;
- begin
-    If s[p]=c
-    Then xp = true
-    Else xp = false;
- end;
-
- function np :boolean;
- begin
-    p  = p+1;
-    np = true;
- end;
-
- label q0, q1, qf,qe;
- var i,max :integer;
-
- begin
- lePalavra;
- max == length(s);
-
- for i = 0 to max do
+program teste;
+var entrada, aux, te1 : integer;
+te, ti : integer;
+procedure umprocedimento(argproc1, argproc2 : integer; argproc3, argproc4 : integer);
+        var procvar, pvar : integer;
+        intprocvar, ppvar : integer;
+        procedure outroproc;
+            var x : integer;
+            begin
+                v := 1;
+                procvar := +(intprocvar,v);
+            end;
+        procedure maisumproc;
+            var x : integer;
+            begin
+                v := 1;
+            end;    
     begin
-        p=1;
-        goto q0;
+        procvar := 1;
+        intprocvar := 34;
+        ppvar := +(intprocvar,2);
+        outroproc ();
+        maisumproc ();
+    end;
+function umafuncao(funcvar : integer) : integer;
+    begin
+        funcvar := 1;
+    end;
+begin;
+    entrada := *(15,2);
+    if (> ( entrada , 15 )) then
+    begin
+        aux := 5;
+    end;
+    umprocedimento ();
+end
+

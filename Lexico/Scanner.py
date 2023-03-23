@@ -8,12 +8,12 @@ class Token():
 def isKeyWord(str = []) -> bool:
     if(str == "read" or str == "write" or str == "for" or str == "to"
     or str == "do" or str == "begin" or str == "end" or str == "repeat"
-    or str == "until" or str == "while" or str == "If" or str == "Else"
-    or str == "function" or str == "integer" or str == "real" or str == "const" 
+    or str == "until" or str == "while" or str == "if" or str == "else"
+    or str == "function" or str == "integer" or str == "real"
     or str == "fila_of_integer" or str == "fila_of_real" or str == "input"
-    or str == "output" or str == "lenght" or str == "concatena" or str == " inverte"
-    or str == "procedure" or str == "var" or str == "Then" or str == "true"
-    or str == "false" or str == "goto" or str == "label" or str == "string" or str == "program"):
+    or str == "output" or str == "lenght" or str == "concatena" or str == " inverte" or str == "var" or str == "boolean"
+    or str == "procedure" or str == "true"
+    or str == "false" or str == "goto" or str == "label" or str == "string" or str == "program" or str == "then"):
         return True
     return False
 
@@ -37,7 +37,7 @@ def isvalidIdentifier(str = []) -> bool:
         return True
     return False
 
-arquivo = open("Lexico\prog.pas", "r")
+arquivo = open("prog.pas", "r")
 
 token = ""
 
@@ -49,7 +49,8 @@ tabela_tokens = []
 for line in arquivo:
     if line.strip() != '':
         while (contadorcoluna<len(line)):
-            if line[contadorcoluna] == ' ' or isvalidIdentifier(line[contadorcoluna]):
+            #print (token)
+            if line[contadorcoluna] == ' ' or line[contadorcoluna] == '\n' or isvalidIdentifier(line[contadorcoluna]) or ( isKeyWord(token) and (line[contadorcoluna] == ' ' or line[contadorcoluna] == '\n')):
                 if isKeyWord(token):
                     tabela_tokens.append(Token(token, "Reserved Word", contadorlinha, contadorcoluna))
                 elif token.isnumeric() and line[contadorcoluna] != ".":
@@ -93,3 +94,6 @@ for i in tabela_tokens:
     f.write(i.name + "    " + i.tipo + "    " + str(i.linha) + "    " + str(i.coluna) + "\n")
 
 f.close()
+arquivo.close()
+
+

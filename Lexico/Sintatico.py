@@ -18,10 +18,10 @@ aux = ""
 
 for line in arquivo:
     for word in line.split():
-        if word == "&":
+        if word == "&": # equivalente a ::= da bnf
             flag = 1
         elif word != "|" and flag == 0:
-            dicionario[word] = Node(word)
+            dicionario[word] = Node(word) # a palavra é um nó
             aux = word
         elif flag == 1:
             dicionario[aux].add_child(word)

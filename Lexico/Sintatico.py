@@ -12,7 +12,7 @@ dicionario = {}
 
 arquivo = open("bnf2.txt", "r")
 
-flag = 0
+flag = 0 #flag ativado caso o simbolo & seja lido, que caso ativada armazena os simbolos num array de filhos em vez de criar uma chave no dicionario
 
 aux = ""
 
@@ -40,8 +40,7 @@ excecoes2 = [ "<tipo_var>","<rotina>"  , "<tipo_funcao>"  , "<comando>" , "<cond
 
 class ExcecSpecial(object):
     def __init__(self):
-        self.contador = 1
-        self.flag = 0
+        self.contador = 1 # contador de único de cada elemento de excecao
 
 def validId(id):
     if id[0].isnumeric():
@@ -50,22 +49,22 @@ def validId(id):
     
 def Error(key,i):
     global aux
-    if key == "<comando>" and i ==":=":
+    if key == "<comando>7" and i ==":=": #excecao especifica para comando7 junto de :=, evita um erro falso
         aux = aux - 1
         return
     print("ERROR " + tabela_tokens[aux].name)
     exit()
 
-aux = 0
+aux = 0 # indice para navegar na tabela de tokens
 #aux2 = 1
-flag = 0
-flag2 = 0
-flag3 = 0
-contador = 0
-backup = ""
-backup2 = "start"
+flag = 0 #flag para sinalizar que está acontecendo navegação em elementos com numero no final: <tipo_var>1
+flag2 = 0 #flag para linhas que empty, serve para ignorar um erro que possa ser causado pelo empty
+flag3 = 0 #flag que serve para evitar possível erro derivado do uso de empty e elementos com numero no final
+contador = 0 #flag usada para desativar flag1 no caso de loops de recursão dentro um dos outros
+backup = "" #só serve para desativar a flag3, pois seu valor se iguala a chave que ativou primeiramente a flag
+backup2 = "start" #placeholder para não dar erro no loop inicial 
 
-excecoesspecial = {}
+excecoesspecial = {} # dicionario de elementos excecão, serva para armazenar o contador de único de cada elemento
 
 for i in excecoes2:
     excecoesspecial[i] = ExcecSpecial()
@@ -74,10 +73,10 @@ excecoesspecial["start"] = ExcecSpecial()
 
 def navegacao(key):
     global aux, flag ,flag2,flag3, backup, backup2, contador
-    if "|" in dicionario[key].children:
+    if "|" in dicionario[key].children: #caso os filhos da chave tenham "|" significa que o caminho empty existe
         flag2 = 1
         backup = key
-    for i in dicionario[key].children:
+    for i in dicionario[key].children: #cada i é um filho da chave do dicionario, exemplo: para a chave <programa>, seu filhos são "program" , <id> , ";" e <corpo> 
         #print("\n")
         #print(key + " " + i)
         #print(tabela_tokens[aux].name + " flag2: " + str(flag2))
@@ -96,7 +95,7 @@ def navegacao(key):
                 flag3 = 0
                 backup = ""
             break
-        if (i[0] != "<" or i == "<") and i != "|":
+        if (i[0] != "<" or i == "<") and i != "|": # se o i for um simbolo terminal, checa se o i é igual ao elemento atual da tabela de tokens
             if i != tabela_tokens[aux].name:
                 if flag == 1:
                     break
@@ -114,9 +113,9 @@ def navegacao(key):
                     flag = 0
                 if flag2 == 1:
                     flag2 = 0
-        elif i !="|" and i!="<empty>":
-            if i in excecoes1 or i in excecoes2:
-                if i =="<id>":
+        elif i !="|" and i!="<empty>": # se o i for um simbolo não terminal
+            if i in excecoes1 or i in excecoes2: # se o i for um simbolo não terminal que está nas excecoes
+                if i =="<id>": #checa se o elemento da tabela de tokens é um id e se o seu formato está correto
                     if not validId(tabela_tokens[aux].name):
                         if flag == 1:
                             break
@@ -142,7 +141,7 @@ def navegacao(key):
                             break
                         else:
                             Error(key,i)
-                elif i =="<integer_num>":
+                elif i =="<integer_num>": #checa se o elemento da tabela de tokens é um numero inteiro
                     if tabela_tokens[aux].name == "+" or tabela_tokens[aux].name == "+":
                         aux = aux + 1
                     if tabela_tokens[aux].tipo == "Number":
@@ -161,7 +160,7 @@ def navegacao(key):
                             break
                         else:
                             Error(key,i)
-                elif i =="<real_num>":
+                elif i =="<real_num>": #checa se o elemento da tabela de tokens é um numero float e  se seu formato está correto
                     if tabela_tokens[aux].name == "+" or tabela_tokens[aux].name == "+":
                         aux = aux + 1
                     if tabela_tokens[aux].name.strip(".").isnumeric() == False:
@@ -189,7 +188,8 @@ def navegacao(key):
                             break
                         else:
                             Error(key,i)                      
-                else:
+                else: # caso i não seja <id>, <integer_num> ou <real_num> então ele será uma das excecoes numéricas, 
+                      # exemplo <tipo_var>, que possui <tipo_var>1, <tipo_var>2, etc
                     mark = flag2
                     flag2 = 0
                     backup3 = backup2
@@ -211,7 +211,7 @@ def navegacao(key):
                     flag2 = mark
                     excecoesspecial[backup2].contador = 1
                     backup2 = backup3
-            else:    
+            else: # caso i seja um nao-terminal e nao esteja nas excecoes a busca continua com recursao      
                 navegacao(i)
                 
 

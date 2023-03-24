@@ -50,7 +50,7 @@ def validId(id):
     
 def Error(key,i):
     global aux
-    if key == "<comando>7" and i ==":=":
+    if key == "<comando>" and i ==":=":
         aux = aux - 1
         return
     print("ERROR " + tabela_tokens[aux].name)

@@ -17,7 +17,7 @@ procedure umprocedimento(argproc1, argproc2 : integer; argproc3, argproc4 : inte
             end;    
     begin
         procvar := 1; 
-        intprocvar := 34;
+        intprocvar := ;
         ppvar := + ( intprocvar,2 );
         outroproc;
         maisumproc;
@@ -25,7 +25,7 @@ procedure umprocedimento(argproc1, argproc2 : integer; argproc3, argproc4 : inte
 function umafuncao (funcvar : integer) : integer;
     begin
         funcvar := 1;
-        v := concatena( 2.3 , 2.4 );
+        v := concatena( - 2 ,  +2.4 );
     end;
 begin
     entrada := *(15,2);

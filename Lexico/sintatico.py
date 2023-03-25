@@ -45,11 +45,21 @@ class ExcecSpecial(object):
         self.contador = 1 # contador de único de cada elemento de excecao
 
 def validId(id):
-    if id[0] in numbers:
+    if id[0] in numbers or id[0] == "+" or id[0] == "-":
         return False
     return True
 
+def validInt(num):
+    if num[0] == "+" or num[0] == "-":
+        num = num[1:]
+    for i in num:
+        if i not in numbers:
+            return False
+    return True
+
 def validFloat(num):
+    if num[0] == "+" or num[0] == "-":
+        num = num[1:]
     for i in num:
         if i !="." and i not in numbers:
             return False
@@ -131,7 +141,7 @@ def navegacao(key):
         elif i !="|" and i!="<empty>":  # se o i for um simbolo não terminal
             if i in excecoes1 or i in excecoes2: # se o i for um simbolo não terminal que está nas excecoes
                 if i =="<id>": #checa se o elemento da tabela de tokens é um id e se o seu formato está correto
-                    if not validId(tabela_tokens[aux].name):
+                    if validId(tabela_tokens[aux].name.strip()) == False:
                         if flag == 1:
                             break
                         if flag2 == 1:
@@ -157,8 +167,15 @@ def navegacao(key):
                         else:
                             Error(key,i)
                 elif i =="<integer_num>": #checa se o elemento da tabela de tokens é um numero inteiro
-                    if tabela_tokens[aux].name == "+" or tabela_tokens[aux].name == "+":
-                        aux = aux + 1
+                    if validInt(tabela_tokens[aux].name.strip()) == False:
+                        if flag == 1:
+                            break
+                        if flag2 == 1:
+                            if backup != key and backup != "":
+                                flag3 = 1
+                            flag2 = 0
+                            break
+                        Error(key,i)
                     if tabela_tokens[aux].tipo == "Number":
                         aux = aux + 1
                         if flag == 1:
@@ -176,8 +193,6 @@ def navegacao(key):
                         else:
                             Error(key,i)
                 elif i =="<real_num>": #checa se o elemento da tabela de tokens é um numero float e  se seu formato está correto
-                    if tabela_tokens[aux].name == "+" or tabela_tokens[aux].name == "+":
-                        aux = aux + 1
                     if validFloat(tabela_tokens[aux].name.strip()) == False:
                         if flag == 1:
                             break

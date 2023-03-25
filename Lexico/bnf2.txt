@@ -46,12 +46,11 @@
 <cont_lista_arg> & , <lista_arg> | <empty>
 <condicao> & <relacao> ( <expressao> , <expressao> )
 <pfalsa> & else begin <sentencas> end | <empty>
-<relacao>1 & =
+<relacao>1 & ==
 <relacao>2 & >
 <relacao>3 & <
 <relacao>4 & >=
 <relacao>5 & <=
-<relacao>6 & ==
 <expressao>1 & <expressao_num>
 <expressao>2 & <expressao_fila>
 <expressao_num> & <termo>

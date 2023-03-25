@@ -190,8 +190,8 @@ def navegacao(key):
                             Error(key,i)                      
                 else: # caso i não seja <id>, <integer_num> ou <real_num> então ele será uma das excecoes numéricas, 
                       # exemplo <tipo_var>, que possui <tipo_var>1, <tipo_var>2, etc
-                    mark = flag2
-                    flag2 = 0
+                    #mark = flag2
+                    #flag2 = 0
                     backup3 = backup2
                     backup2 = i
                     if flag == 1:
@@ -202,13 +202,14 @@ def navegacao(key):
                         #print(tabela_tokens[aux].name)
                         navegacao(i + str(excecoesspecial[backup2].contador))
                         excecoesspecial[backup2].contador = excecoesspecial[backup2].contador + 1
-                    if mark == 0 and flag2 == 0 and (i + str(excecoesspecial[backup2].contador)) not in dicionario and flag == 0:
+                    #mark == 0
+                    if flag2 == 0 and (i + str(excecoesspecial[backup2].contador)) not in dicionario and flag == 0:
                         Error(key,i) 
                     if contador > 0:
                         contador = contador - 1
                     if contador == 0:
                         flag = 0
-                    flag2 = mark
+                    #flag2 = mark
                     excecoesspecial[backup2].contador = 1
                     backup2 = backup3
             else: # caso i seja um nao-terminal e nao esteja nas excecoes a busca continua com recursao      

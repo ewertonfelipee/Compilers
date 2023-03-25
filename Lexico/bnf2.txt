@@ -33,10 +33,10 @@
 <mais_var_write> & , <var_write> | <empty>
 <comando>1 & read ( <var_read> )
 <comando>2 & write ( <var_write> )
-<comando>3 & for <id> := <expressao> to <expressao> do begin <sentencas> end ;
+<comando>3 & for <id> := <expressao> to <expressao> do begin <sentencas> end 
 <comando>4 & repeat <sentencas> until ( <condicao> )
-<comando>5 & while ( <condicao> ) do begin <sentencas> end ;
-<comando>6 & if ( <condicao> ) then begin <sentencas> end ; <pfalsa>
+<comando>5 & while ( <condicao> ) do begin <sentencas> end 
+<comando>6 & if ( <condicao> ) then begin <sentencas> end  <pfalsa>
 <comando>7 & <id> := <expressao>
 <comando>8 & <chamada_procedimento>
 <comando>9 & <empty>
@@ -54,8 +54,7 @@
 <relacao>6 & ==
 <expressao>1 & <expressao_num>
 <expressao>2 & <expressao_fila>
-<expressao_num>1 & <termo>
-<expressao_num>2 & <id> <argumentos>
+<expressao_num> & <termo>
 <operando>1 & <id>
 <operando>2 & <integer_num>
 <operando>3 & <real_num>
@@ -66,7 +65,7 @@
 <operador>4 & /
 <operador>5 & %
 <termo>1 & <operador> ( <operando> , <operando> )
-<termo>2 & <id>
+<termo>2 & <id> <argumentos>
 <termo>3 & <integer_num>
 <termo>4 & <real_num>
 <expressao_fila>1 & <opFila> ( <conteudo> )

@@ -13,7 +13,7 @@ procedure umprocedimento(argproc1, argproc2 : integer; argproc3, argproc4 : inte
         procedure maisumproc;
             var x : integer;
             begin
-                v := 1;
+                v := a;
             end;    
     begin
         procvar := 1; 
@@ -38,15 +38,15 @@ begin
         procvar := 1;
         intprocvar := 34;
     end;
-
+    
     while ( >= ( 1 , 10 ) ) do
-    begin;
+    begin
         procvar := 1;
         intprocvar := 34;
     end;
 
     for i := 1 to i (10) do
-    begin;
+    begin
         procvar := 1;
         intprocvar := 34;
     end;

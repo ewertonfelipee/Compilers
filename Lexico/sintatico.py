@@ -37,15 +37,24 @@ excecoes1 = ["<id>", "<real_num>", "<integer_num>"]
 excecoes2 = [ "<tipo_var>","<rotina>"  , "<tipo_funcao>"  , "<comando>"  , "<expressao>"  
             , "<relacao>"   , "<operando>"  , "<operador>"  , "<termo>"  , "<expressao_fila>"  , "<conteudo>" , "<opFila>" ]
 
+numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
 
 class ExcecSpecial(object):
     def __init__(self):
         self.contador = 1 # contador de único de cada elemento de excecao
 
 def validId(id):
-    if id[0].isnumeric():
+    if id[0] in numbers:
         return False
     return True
+
+def validFloat(num):
+    for i in num:
+        if i !="." and i not in numbers:
+            return False
+    return True
+    
     
 def Error(key,i):
     global aux
@@ -80,7 +89,7 @@ def navegacao(key):
     for i in dicionario[key].children: #cada i é um filho da chave do dicionario, exemplo: para a chave <programa>, seu filhos são "program" , <id> , ";" e <corpo> 
         #print("\n")
         #print(key + " " + i)
-        #print(tabela_tokens[aux].name + " flag2: " + str(flag2))
+        #print(tabela_tokens[aux].name + " flag: " + str(flag))
         #print("*"+backup + "*")
         if i == "<empty>":
             flag2 = 1
@@ -167,7 +176,7 @@ def navegacao(key):
                 elif i =="<real_num>": #checa se o elemento da tabela de tokens é um numero float e  se seu formato está correto
                     if tabela_tokens[aux].name == "+" or tabela_tokens[aux].name == "+":
                         aux = aux + 1
-                    if tabela_tokens[aux].name.strip(".").isnumeric() == False:
+                    if validFloat(tabela_tokens[aux].name.strip()) == False:
                         if flag == 1:
                             break
                         if flag2 == 1:
@@ -199,8 +208,7 @@ def navegacao(key):
                     aux2 = aux
                     backup3 = backup2
                     backup2 = i
-                    if flag == 1:
-                        contador = contador + 1
+                    contador = contador + 1
                     flag = 1
                     while((i + str(excecoesspecial[backup2].contador)) in dicionario) and flag == 1:
                         flag4 = 0

@@ -11,14 +11,14 @@ def isKeyWord(str = []) -> bool:
     or str == "until" or str == "while" or str == "if" or str == "else"
     or str == "function" or str == "integer" or str == "real"
     or str == "fila_of_integer" or str == "fila_of_real" or str == "input"
-    or str == "output" or str == "lenght" or str == "concatena" or str == " inverte" or str == "var" or str == "boolean"
+    or str == "output" or str == "length" or str == "concatena" or str == "inverte" or str == "var" or str == "boolean"
     or str == "procedure" or str == "true"
     or str == "false" or str == "goto" or str == "label" or str == "string" or str == "program" or str == "then"):
         return True
     return False
 
 def isOperator(ch) -> bool:
-    if(ch == "+" or ch == "-" or ch == "*" or ch == "/" or ch == "%" or ch == "#" ):
+    if(ch == "+" or ch == "-" or ch == "*" or ch == "/" or ch == "%" or ch== "#"):
         return True
     return False
 
@@ -51,6 +51,7 @@ for line in arquivo:
         while (contadorcoluna<len(line)):
             #print (token)
             if line[contadorcoluna] == ' ' or line[contadorcoluna] == '\n' or isvalidIdentifier(line[contadorcoluna]) or ( isKeyWord(token) and (line[contadorcoluna] == ' ' or line[contadorcoluna] == '\n')):
+                
                 if isKeyWord(token):
                     tabela_tokens.append(Token(token, "Reserved Word", contadorlinha, contadorcoluna))
                 elif token.isnumeric() and line[contadorcoluna] != ".":

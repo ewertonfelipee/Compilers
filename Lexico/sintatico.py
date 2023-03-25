@@ -34,9 +34,8 @@ for line in arquivo:
 
 excecoes1 = ["<id>", "<real_num>", "<integer_num>"]
 
-excecoes2 = [ "<tipo_var>","<rotina>"  , "<tipo_funcao>"  , "<comando>" , "<condicao>"  , "<expressao>"  
-            , "<relacao>"  , "<expressao_num>"  , "<operando>"  , "<operador>"  , "<termo>"  , "<expressao_fila>"  , "<conteudo>" , "<opFila>" ]
-
+excecoes2 = [ "<tipo_var>","<rotina>"  , "<tipo_funcao>"  , "<comando>"  , "<expressao>"  
+            , "<relacao>"   , "<operando>"  , "<operador>"  , "<termo>"  , "<expressao_fila>"  , "<conteudo>" , "<opFila>" ]
 
 class ExcecSpecial(object):
     def __init__(self):
@@ -90,7 +89,7 @@ def navegacao(key):
             print("aadadad")
             exit()
         if flag3 == 1 and backup != "":
-            print("aa")
+            #print("aa")
             if backup == key:
                 flag3 = 0
                 backup = ""

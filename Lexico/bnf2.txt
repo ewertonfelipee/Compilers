@@ -51,9 +51,8 @@
 <relacao>3 & <
 <relacao>4 & >=
 <relacao>5 & <=
-<expressao>1 & <expressao_num>
+<expressao>1 & <termo>
 <expressao>2 & <expressao_fila>
-<expressao_num> & <termo>
 <operando>1 & <id>
 <operando>2 & <integer_num>
 <operando>3 & <real_num>
@@ -73,8 +72,8 @@
 <conteudo>1 & #
 <conteudo>2 & <integer_num> <integer_num_cont>
 <conteudo>3 & <real_num> <real_num_cont>
-<integer_num_cont> & , <integer_num> <integer_num_cont> | <empty>
-<real_num_cont> & , <real_num> <real_num_cont> | <empty>
+<integer_num_cont> & ; <integer_num> <integer_num_cont> | <empty>
+<real_num_cont> & ; <real_num> <real_num_cont> | <empty>
 <opFila>1 & input
 <opFila>2 & output
 <opFila>3 & length

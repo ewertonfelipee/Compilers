@@ -191,6 +191,7 @@ def navegacao(key):
                       # exemplo <tipo_var>, que possui <tipo_var>1, <tipo_var>2, etc
                     #mark = flag2
                     #flag2 = 0
+                    aux2 = aux
                     backup3 = backup2
                     backup2 = i
                     if flag == 1:
@@ -201,13 +202,13 @@ def navegacao(key):
                         #print(tabela_tokens[aux].name)
                         navegacao(i + str(excecoesspecial[backup2].contador))
                         excecoesspecial[backup2].contador = excecoesspecial[backup2].contador + 1
-                    #mark == 0
-                    if flag2 == 0 and (i + str(excecoesspecial[backup2].contador)) not in dicionario and flag == 0:
-                        Error(key,i) 
                     if contador > 0:
                         contador = contador - 1
                     if contador == 0:
                         flag = 0
+                    #mark == 0
+                    if flag2 == 0 and (i + str(excecoesspecial[backup2].contador)) not in dicionario and flag == 0 and aux2 == aux:
+                        Error(key,i)
                     #flag2 = mark
                     excecoesspecial[backup2].contador = 1
                     backup2 = backup3

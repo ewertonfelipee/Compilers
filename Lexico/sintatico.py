@@ -69,7 +69,7 @@ aux = 0 # indice para navegar na tabela de tokens
 flag = 0 #flag para sinalizar que está acontecendo navegação em elementos com numero no final: <tipo_var>1
 flag2 = 0 #flag para linhas que empty, serve para ignorar um erro que possa ser causado pelo empty
 flag3 = 0 #flag que serve para evitar possível erro derivado do uso de empty e elementos com numero no final
-flag4 = 0 #flag usada muito especificamente para casos com elementos com numero no final
+flag4 = 0 #flag usada muito especificamente para casos com elementos com numero no final #mudança que pode quebrar tudo
 contador = 0 #flag usada para desativar flag1 no caso de loops de recursão dentro um dos outros
 backup = "" #só serve para desativar a flag3, pois seu valor se iguala a chave que ativou primeiramente a flag
 backup2 = "start" #placeholder para não dar erro no loop inicial 
@@ -89,13 +89,13 @@ def navegacao(key):
     for i in dicionario[key].children: #cada i é um filho da chave do dicionario, exemplo: para a chave <programa>, seu filhos são "program" , <id> , ";" e <corpo> 
         #print("\n")
         #print(key + " " + i)
-        #print(tabela_tokens[aux].name + " flag: " + str(flag))
+        #print(tabela_tokens[aux].name + " flag: " + str(flag) + " flag2: " + str(flag2))
         #print("*"+backup + "*")
         if i == "<empty>":
             flag2 = 1
             break
         if aux == len(tabela_tokens):
-            if tabela_tokens[aux - 1].name != "end":                
+            if tabela_tokens[aux - 1].name != "end" or key != "<corpo>": #mudança que pode quebrar tudo       
                 Error(key,i)
             print("Sucesso")
             exit()
@@ -110,6 +110,8 @@ def navegacao(key):
             break
         if (i[0] != "<" or i == "<" or i == "<=") and i != "|": # se o i for um simbolo terminal, checa se o i é igual ao elemento atual da tabela de tokens
             if i != tabela_tokens[aux].name:
+                if i =="end": #mudança que pode quebrar tudo
+                    Error(key,i)
                 if flag == 1:
                     break
                 if flag2 == 1:
@@ -205,7 +207,7 @@ def navegacao(key):
                     # exemplo <tipo_var>, que possui <tipo_var>1, <tipo_var>2, etc
                     #mark = flag2
                     #flag2 = 0
-                    aux2 = aux
+                    aux2 = aux #mudança que pode quebrar tudo
                     backup3 = backup2
                     backup2 = i
                     contador = contador + 1

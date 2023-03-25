@@ -60,6 +60,7 @@ aux = 0 # indice para navegar na tabela de tokens
 flag = 0 #flag para sinalizar que está acontecendo navegação em elementos com numero no final: <tipo_var>1
 flag2 = 0 #flag para linhas que empty, serve para ignorar um erro que possa ser causado pelo empty
 flag3 = 0 #flag que serve para evitar possível erro derivado do uso de empty e elementos com numero no final
+flag4 = 0 #flag usada muito especificamente para casos com elementos com numero no final
 contador = 0 #flag usada para desativar flag1 no caso de loops de recursão dentro um dos outros
 backup = "" #só serve para desativar a flag3, pois seu valor se iguala a chave que ativou primeiramente a flag
 backup2 = "start" #placeholder para não dar erro no loop inicial 
@@ -72,7 +73,7 @@ for i in excecoes2:
 excecoesspecial["start"] = ExcecSpecial() 
 
 def navegacao(key):
-    global aux, flag ,flag2,flag3, backup, backup2, contador
+    global aux, flag ,flag2,flag3, flag4,backup, backup2, contador
     if "|" in dicionario[key].children: #caso os filhos da chave tenham "|" significa que o caminho empty existe
         flag2 = 1
         backup = key
@@ -89,6 +90,9 @@ def navegacao(key):
                 Error(key,i)
             print("Sucesso")
             exit()
+        if flag4 == 1:
+            #print("aaa")
+            break
         if flag3 == 1 and backup != "":
             #print("aa")
             if backup == key:
@@ -199,6 +203,7 @@ def navegacao(key):
                         contador = contador + 1
                     flag = 1
                     while((i + str(excecoesspecial[backup2].contador)) in dicionario) and flag == 1:
+                        flag4 = 0
                         #print(dicionario[i + str(excecoesspecial[backup2].contador)].children)
                         #print(tabela_tokens[aux].name)
                         navegacao(i + str(excecoesspecial[backup2].contador))
@@ -208,8 +213,11 @@ def navegacao(key):
                     if contador == 0:
                         flag = 0
                     #mark ==0
-                    if flag2 == 0 and (i + str(excecoesspecial[backup2].contador)) not in dicionario and flag == 0 and aux2 == aux:
-                        Error(key,i) 
+                    if flag2 == 0 and (i + str(excecoesspecial[backup2].contador)) not in dicionario  and aux2 == aux:
+                        if flag==0:
+                            Error(key,i) 
+                        else:
+                            flag4 = 1
                     #flag2 = mark
                     excecoesspecial[backup2].contador = 1
                     backup2 = backup3

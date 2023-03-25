@@ -13,7 +13,7 @@ def isKeyWord(str = []) -> bool:
     or str == "fila_of_integer" or str == "fila_of_real" or str == "input"
     or str == "output" or str == "lenght" or str == "concatena" or str == " inverte" or str == "var" or str == "boolean"
     or str == "procedure" or str == "true"
-    or str == "false" or str == "goto" or str == "label" or str == "string" or str == "program" or str == "then"):
+    or str == "false" or str == "goto" or str == "label" or str == "string" or str == "program" or str == "then" or str == "#"):
         return True
     return False
 

@@ -1,6 +1,6 @@
 program teste;
 var entrada, aux, te1 : integer;
-te, ti : integer;
+te, ti : fila_of_integer;
 procedure umprocedimento(argproc1, argproc2 : integer; argproc3, argproc4 : integer);
         var procvar, pvar : integer;
         intprocvar, ppvar : integer;
@@ -8,7 +8,7 @@ procedure umprocedimento(argproc1, argproc2 : integer; argproc3, argproc4 : inte
             var x : integer;
             begin
                 v := 1;
-                procvar := +(intprocvar,v);
+                procvar := + ( intprocvar , v );
             end;
         procedure maisumproc;
             var x : integer;
@@ -18,20 +18,36 @@ procedure umprocedimento(argproc1, argproc2 : integer; argproc3, argproc4 : inte
     begin
         procvar := 1;
         intprocvar := 34;
-        ppvar := +(intprocvar,2);
+        ppvar := + ( intprocvar,2 );
         outroproc ();
         maisumproc ();
     end;
-function umafuncao(funcvar : integer) : integer;
+function umafuncao (funcvar : integer) : integer;
     begin
         funcvar := 1;
     end;
-begin;
+begin
     entrada := *(15,2);
-    if (> ( entrada , 15 )) then
+    if ( > ( 1 , 15 )) then
     begin
         aux := 5;
+    end
+    else 
+    begin
+        procvar := 1;
+        intprocvar := 34;
     end;
+
+    while ( > ( 1 , 10 ) ) do
+    begin;
+    
+    end;
+
+    for i := 1 to i  do
+    begin;
+
+    end;
+
     umprocedimento ();
 end
 

@@ -222,8 +222,8 @@ def navegacao(key):
                     # exemplo <tipo_var>, que possui <tipo_var>1, <tipo_var>2, etc
                     #mark = flag2
                     #flag2 = 0
-                    aux2 = aux #mudança que pode quebrar tudo
-                    backup3 = backup2
+                    aux2 = aux #flag usada pra checar se vai houve mudança no aux, que é o indice da tabela de tokens #mudança que pode quebrar tudo
+                    backup3 = backup2 #variavel usada para salvar o valor de backup2, que serve para acessar o contador único de cada excecao
                     backup2 = i
                     contador = contador + 1
                     flag = 1

@@ -98,6 +98,9 @@ for line in arquivo:
                     if (line[contadorcoluna] == '<' or line[contadorcoluna] == '>' or line[contadorcoluna] == '=') and line[contadorcoluna + 1] == "=":
                         tabela_tokens.append(Token(line[contadorcoluna] + line[contadorcoluna + 1], "Relational", contadorlinha, contadorcoluna))
                         contadorcoluna += 1
+                    elif line[contadorcoluna] == '=' and line[contadorcoluna + 1] != "=":
+                        print("LEXICAL ERROR")
+                        exit()
                     else:
                         tabela_tokens.append(Token(line[contadorcoluna], "Relational", contadorlinha, contadorcoluna))
                     token = ""

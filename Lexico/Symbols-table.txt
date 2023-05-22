@@ -1,0 +1,30 @@
+Nome - Categoria - Escopo - Tipo - Valor
+-------------------------------------------------------------------------------------------------------------
+entrada variavel global integer 30
+aux variavel global integer 5
+te1 variavel global integer null
+v variavel global integer 34
+i variavel global integer 1
+oi variavel global real 4.4
+te variavel global fila_of_integer null
+ti variavel global fila_of_integer null
+umprocedimento procedure global null null
+umafuncao function global integer null
+-------------------------------------------------------------------------------------------------------------
+x variavel maisumproc integer null
+-------------------------------------------------------------------------------------------------------------
+x variavel outroproc integer null
+-------------------------------------------------------------------------------------------------------------
+funcvar variavel umafuncao fila_of_integer PLACEHOLDER
+-------------------------------------------------------------------------------------------------------------
+argproc1 variavel umprocedimento real null
+argproc2 variavel umprocedimento integer null
+argproc3 variavel umprocedimento integer null
+argproc4 variavel umprocedimento integer null
+procvar variavel umprocedimento integer 1
+pvar variavel umprocedimento integer null
+intprocvar variavel umprocedimento real -1.2
+ppvar variavel umprocedimento real 1.0000000000000002
+outroproc procedure umprocedimento null null
+maisumproc procedure umprocedimento null null
+-------------------------------------------------------------------------------------------------------------

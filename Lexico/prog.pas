@@ -1,55 +1,56 @@
 program teste;
-var entrada, aux, te1 : integer;
+var entrada, aux, te1 , v, i: integer;
+oi : real;
 te, ti : fila_of_integer;
-procedure umprocedimento(argproc1, argproc2 : integer; argproc3, argproc4 : integer);
-        var procvar, pvar : fila_of_real;
-        intprocvar, ppvar : integer;
+procedure umprocedimento(argproc1 : real; argproc2 , argproc3, argproc4 : integer);
+        var procvar, pvar: integer;
+        intprocvar, ppvar : real;
         procedure outroproc;
-            var x : integer;
+            var x: integer;
             begin
-                v := 1;
-                procvar := + ( intprocvar , v );
+                v := -1;
+                v := + ( 2 , v );
             end;
         procedure maisumproc;
             var x : integer;
             begin
-                v := a;
+                v := 2;
             end;    
     begin
-        procvar := 1; 
-        intprocvar := ;
-        ppvar := + ( intprocvar,2 );
-        outroproc;
-        maisumproc;
+        procvar := 1;
+        intprocvar := -1.2;
+        ppvar := + ( intprocvar,2.2 );
     end;
-function umafuncao (funcvar : integer) : integer;
+function umafuncao (funcvar : fila_of_integer) : integer;
     begin
-        funcvar := 1;
-        v := concatena( - 2 ,  +2.4 );
+        funcvar := concatena( - 2 ,  +2 );
     end;
 begin
     entrada := *(15,2);
-    if ( <= ( 1 , 15 )) then
+    oi := 4.4;
+
+    if ( == ( 1 , 15 )) then
     begin
         aux := 5;
     end
     else 
     begin
-        procvar := 1;
-        intprocvar := 34;
+        v := 1;
+        v := 34;
     end;
     
     while ( >= ( 1 , 10 ) ) do
     begin
-        procvar := 1;
-        intprocvar := 34;
+        v := 1;
+        v := 34;
     end;
 
     for i := 1 to i (10) do
     begin
-        procvar := 1;
-        intprocvar := 34;
+        v := 1;
+        v := 34;
     end;
 
-    umprocedimento;
+    
+    umprocedimento(oi,4,4,4);
 end

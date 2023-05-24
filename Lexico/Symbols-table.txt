@@ -6,8 +6,8 @@ te1 variavel global integer null
 v variavel global integer 34
 i variavel global integer 1
 oi variavel global real 4.4
-te variavel global fila_of_integer null
-ti variavel global fila_of_integer null
+te variavel global fila_of_integer [2, 3]
+ti variavel global fila_of_integer []
 umprocedimento procedure global null null
 umafuncao function global integer null
 -------------------------------------------------------------------------------------------------------------
@@ -15,7 +15,7 @@ x variavel maisumproc integer null
 -------------------------------------------------------------------------------------------------------------
 x variavel outroproc integer null
 -------------------------------------------------------------------------------------------------------------
-funcvar variavel umafuncao fila_of_integer PLACEHOLDER
+funcvar variavel umafuncao integer -1
 -------------------------------------------------------------------------------------------------------------
 argproc1 variavel umprocedimento real null
 argproc2 variavel umprocedimento integer null

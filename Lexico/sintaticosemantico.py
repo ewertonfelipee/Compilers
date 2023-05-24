@@ -16,6 +16,7 @@ class Variavel():
         self.escopo = escopo
         self.tipo = tipo
         self.valor = valor
+        self.valorlista = []
         self.parametro = False
         self.ordem = []
 
@@ -448,6 +449,8 @@ def criartabela():
                                 variaveis[aux2].valor = valor1[0] / valor2[0]
                             elif operacao == "%":
                                 variaveis[aux2].valor = valor1[0] % valor2[0]
+                            elif operacao == "concatena":
+                                variaveis[aux2].valorlista = [valor1[0] , valor2[0]]
                             else:
                                 variaveis[aux2].valor = "PLACEHOLDER"
                         elif tabela_tokens[i].tipo == "Id":
@@ -464,7 +467,7 @@ def criartabela():
                         exit()
                     elif aux2 ==-1 and flag == -1:
                         print("ERROR SEMANTICO")
-                        print(tabela_tokens[i].name)
+                        #print(tabela_tokens[i].name)
                         exit()
                 elif (tabela_tokens[i].tipo == "Id" and (tabela_tokens[i + 1].name == ";" or tabela_tokens[i + 1].name == "(") and tabela_tokens[i - 1].name != "to"):
                     aux2, flag = checkId(tabela_tokens[i].name , escopos)
@@ -474,7 +477,7 @@ def criartabela():
                             exit()
                         elif variaveis[aux2].parametro == True and tabela_tokens[i + 1].name == "(":
                             i = i + 2
-                            print(variaveis[aux2].ordem)
+                            #print(variaveis[aux2].ordem)
                             for k in variaveis[aux2].ordem:
                                 if tabela_tokens[i].tipo == "Real":
                                     if k != "real":
@@ -530,7 +533,10 @@ def criartabela():
     for i in variaveisorted:
         if i.escopo != troca:
             symbols.write("-------------------------------------------------------------------------------------------------------------\n")
-        symbols.write(i.name + " " + i.categoria + " " + i.escopo + " " + i.tipo + " " + str(i.valor) + "\n")
+        if i.tipo == "fila_of_integer" or i.tipo == "fila_of_real":
+            symbols.write(i.name + " " + i.categoria + " " + i.escopo + " " + i.tipo + " " + str(i.valorlista) + "\n")
+        else:
+            symbols.write(i.name + " " + i.categoria + " " + i.escopo + " " + i.tipo + " " + str(i.valor) + "\n")
         troca = i.escopo
     symbols.write("-------------------------------------------------------------------------------------------------------------\n")
     symbols.close()

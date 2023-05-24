@@ -21,13 +21,17 @@ procedure umprocedimento(argproc1 : real; argproc2 , argproc3, argproc4 : intege
         intprocvar := -1.2;
         ppvar := + ( intprocvar,2.2 );
     end;
-function umafuncao (funcvar : fila_of_integer) : integer;
+function umafuncao (funcvar : integer) : integer;
     begin
-        funcvar := concatena( - 2 ,  +2 );
+        funcvar := -(  5,  6 );
     end;
 begin
+
     entrada := *(15,2);
+
     oi := 4.4;
+
+    te := concatena(2,3);
 
     if ( == ( 1 , 15 )) then
     begin
@@ -51,6 +55,5 @@ begin
         v := 34;
     end;
 
-    
-    umprocedimento(oi,4,4,4);
+    umprocedimento(oi,entrada,4,4);
 end
